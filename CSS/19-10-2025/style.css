@@ -1,0 +1,56 @@
+/* body {
+    background-color: red;
+} */
+
+/* ul > li {
+    color: blue;
+} */
+
+/* ul > li > a > span {
+    color: yellow;
+} */
+
+/* ul span {
+    color: green;
+} */
+
+/* h1+p {
+    background-color: pink;
+} */
+/* h1~p {
+    background-color: pink;
+} */
+
+/* #kuch-bhi {
+    background: green;
+    color: red;
+}
+
+
+.subject {
+    background-color: black;
+    color: yellow;
+}
+
+h1 {
+    background-color: black;
+    color: white;
+} */
+
+#kuch-bhi{
+    color: blue;
+}
+
+.subject {
+    color: purple ;
+}
+
+h1{
+    color: #9adb1a !important;
+    background-color: rgb(140,43,21)
+}
+
+.red{
+    background-color: orange;
+    opacity: 0.3;
+}

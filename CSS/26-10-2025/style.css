@@ -1,0 +1,65 @@
+* {
+    /* font-family: 'Courier New', Courier, monospace; */
+}
+
+.post > h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-size: 150px; */
+    font-style: italic;
+    color: orange;
+    /* text-shadow: 2px 2px 2px black; */
+    /* text-decoration: underline; */
+    /* text-align: right; */
+}
+
+.post > h1:hover {
+    text-shadow: 2px 2px 2px black;
+    text-decoration: underline;
+    color: red;
+}
+
+.post > p {
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-weight: 900; */
+    /* line-height: 50px; */
+    /* letter-spacing: 6px; */
+    /* word-spacing: 50px; */
+    text-indent: 100px;
+}
+
+
+.post > p::first-letter {
+    color: blue;
+    font-size: 30px;
+}
+.post > p::first-line {
+    color: green;
+}
+
+.post > span {
+    text-transform: capitalize;
+}
+
+.post > a {
+    text-decoration: none;
+}
+
+.post > input:focus{
+    background-color: aqua;
+    color: blue;
+}
+
+.btn {
+    background-color: #a3b18a;
+    border: none;
+    width: 100px;
+    color: #edede9;
+    border-radius: 20px;
+}
+
+.btn:hover{
+    background-color: #03045e;
+}
+
+
