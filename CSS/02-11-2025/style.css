@@ -1,0 +1,54 @@
+li {
+  list-style: square;
+  list-style-position: outside;
+}
+
+td {
+  empty-cells: hide;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.main {
+  width: 500px;
+  height: 500px;
+  border: 2px solid green;
+  position: relative;
+}
+
+.box {
+  background-color: blue;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  /* margin-top: 50px; */
+  /* bottom: 0px; */
+  right: -30px;
+  top: 0;
+}
+
+.box1{
+    background-color: blue;
+  width: 25%;
+  /* width: 200px; */
+  height: 900px;
+  position: absolute;
+  /* z-index: -1; */
+}
+
+.box2 {
+  background-color: red;
+  /* width: 200px; */
+  width: 75%;
+  height: 900px;
+  float: right;
+}
+
+.whatsapp{
+    width: 40px;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
