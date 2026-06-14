@@ -1,66 +1,120 @@
 var displayValue = document.getElementById("displayValue");
 
-function appendValue(value) {
-  displayValue.value += value;
-}
+var firstNumber = "";
+var selectedOperator = "";
+var secondNumber = "";
+var isOperatorClicked = false;
 
 function number(val) {
-  appendValue(val);
+  if (isOperatorClicked === false) {
+    firstNumber += val;
+    displayValue.value = firstNumber;
+  } else {
+    secondNumber += val;
+    displayValue.value = firstNumber + selectedOperator + secondNumber;
+  }
 }
 
 function operator(op) {
-  var current = displayValue.value;
-  var lastChar = current.slice(-1);
-
-  if (!current && op !== "%") {
-    // Prevent starting with an operator other than percent
+  if (firstNumber === "") {
     return;
   }
 
-  if (["+", "-", "*", "/", "%"].includes(lastChar)) {
-    displayValue.value = current.slice(0, -1) + op;
-  } else {
-    appendValue(op);
+  if (selectedOperator !== "" && secondNumber === "") {
+    selectedOperator = op;
+    displayValue.value = firstNumber + selectedOperator;
+    return;
   }
+
+  selectedOperator = op;
+  isOperatorClicked = true;
+  displayValue.value = firstNumber + selectedOperator;
 }
 
 function decimalPoint() {
-  var current = displayValue.value;
-  if (!current || /[+\-*/%]$/.test(current)) {
-    appendValue("0.");
-    return;
+  if (isOperatorClicked === false) {
+    if (!firstNumber.includes(".")) {
+      firstNumber += ".";
+      displayValue.value = firstNumber;
+    }
+  } else {
+    if (!secondNumber.includes(".")) {
+      secondNumber += ".";
+      displayValue.value = firstNumber + selectedOperator + secondNumber;
+    }
+  }
+}
+
+function calculate() {
+  if (firstNumber === "" || selectedOperator === "" || secondNumber === "") {
+    return ;
   }
 
-  var tokens = current.split(/[+\-*/%]/);
-  var lastToken = tokens[tokens.length - 1];
-  if (!lastToken.includes(".")) {
-    appendValue(".");
+  var num1 = Number(firstNumber);
+  var num2 = Number(secondNumber);
+  var result;
+
+  switch (selectedOperator) {
+    case "+":
+      result = num1 + num2;
+      break;
+
+    case "-":
+      result = num1 - num2;
+      break;
+
+    case "*":
+      result = num1 * num2;
+      break;
+
+    case "/":
+      result = num1 / num2;
+      break;
+
+    case "%":
+      result = num1 % num2;
+      break;
   }
+
+  displayValue.value = result;
+
+  firstNumber = result.toString();
+  secondNumber = "";
+  selectedOperator = "";
+  isOperatorClicked = false;
 }
 
 function clearBtn() {
   displayValue.value = "";
+  firstNumber = "";
+  secondNumber = "";
+  selectedOperator = "";
+  isOperatorClicked = false;
 }
 
 function deleteBtn() {
-  displayValue.value = displayValue.value.slice(0, -1);
-}
-
-function calculate() {
-  var expression = displayValue.value;
-  if (!expression) {
-    return;
+  if (secondNumber !== "") {
+    secondNumber = secondNumber.slice(0, -1);
+  } else if (selectedOperator !== "") {
+    selectedOperator = "";
+    isOperatorClicked = false;
+  } else if (firstNumber !== "") {
+    firstNumber = firstNumber.slice(0, -1);
   }
 
-  expression = expression.replace(/%/g, "/100");
-
-  try {
-    var result = eval(expression);
-    displayValue.value = result;
-  } catch (err) {
-    displayValue.value = "Error";
-    setTimeout(function () {
-      displayValue.value = "";
-    }, 1000);
-  }
+  displayValue.value = firstNumber + selectedOperator + secondNumber;
+  // displayValue.value = displayValue.value.slice(0, -1)
 }
+
+
+
+// FIGHTING Animation find keyboard key:
+var spiderleft;
+document.addEventListener('keydown', function (event) {
+  console.log(`Key pressed: ${event.key}`);
+
+  if(event.key === "ArrowDown"){
+    alert("HELLO")
+    spiderleft = 10
+  }
+});
